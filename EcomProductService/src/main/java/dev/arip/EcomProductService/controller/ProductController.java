@@ -4,10 +4,9 @@ import dev.arip.EcomProductService.dto.FakeStoreProductResponseDTO;
 import dev.arip.EcomProductService.entity.Product;
 import dev.arip.EcomProductService.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,6 +14,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
+    @Qualifier("ProductServiceIMPL")
     private ProductService productService;
 
     @GetMapping("/product")
@@ -29,6 +29,13 @@ public class ProductController {
     {
         FakeStoreProductResponseDTO product = productService.getProductById(productId);
         return ResponseEntity.ok(product);
+    }
+
+    @PostMapping("/product")
+    public ResponseEntity createProduct(@RequestBody Product product)
+    {
+        Product saveProduct = productService.createProduct(product);
+        return ResponseEntity.ok(saveProduct);
     }
 
 

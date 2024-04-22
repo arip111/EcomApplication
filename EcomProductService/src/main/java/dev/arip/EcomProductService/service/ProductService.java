@@ -3,6 +3,7 @@ package dev.arip.EcomProductService.service;
 import dev.arip.EcomProductService.dto.FakeStoreCartResponseDTO;
 import dev.arip.EcomProductService.dto.FakeStoreProductResponseDTO;
 import dev.arip.EcomProductService.entity.Product;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
